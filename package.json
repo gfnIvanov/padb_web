@@ -5,10 +5,9 @@
   "scripts": {
     "serve": "yarn lint && yarn test && vue-cli-service serve",
     "build": "vue-cli-service build",
-    "build-prod": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "test": "jest",
-    "app": "yarn build-prod && node server/main.js"
+    "app": "yarn build && node server/main.js"
   },
   "dependencies": {
     "axios": "^1.4.0",

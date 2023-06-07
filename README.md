@@ -31,5 +31,13 @@ yarn test
 ```
 yarn app
 ```
+
+### Run with Docker
+```
+docker build -t [name] .
+
+docker run -it -p 3000:3000 [image]
+```
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
