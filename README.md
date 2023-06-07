@@ -36,7 +36,7 @@ yarn app
 ```
 docker build -t [name] .
 
-docker run -it -p 3000:3000 [image]
+docker run -it -p [port]:[port] [image]
 ```
 
 ### Customize configuration
