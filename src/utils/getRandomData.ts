@@ -1,7 +1,7 @@
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import type { TestData } from '@/types';
 
-export async function getRandomData(): Promise<TestData | Error> {
+export async function getRandomData(): Promise<TestData> {
     try {
         const response = await axios.get(
             'http://127.0.0.1:9100/get-random-data',
@@ -9,7 +9,18 @@ export async function getRandomData(): Promise<TestData | Error> {
         if (response.status !== 200) throw new Error(response.statusText);
         return response.data;
     } catch (e) {
-        console.error('Ошибка при запросе данных (get-random-data)', e);
-        return new Error();
+        if (e instanceof AxiosError) {
+            if (e.code === 'ECONNREFUSED') {
+                throw new Error('Удаленный сервер недоступен!');
+            } else {
+                throw new Error(
+                    'Ошибка при запросе данных (get-random-data): ' + e.message,
+                );
+            }
+        } else {
+            throw new Error(
+                'Ошибка при запросе данных (get-random-data): ' + e,
+            );
+        }
     }
 }

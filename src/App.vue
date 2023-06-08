@@ -47,10 +47,13 @@ export default defineComponent({
     },
     methods: {
         async getData() {
-            const data = await getRandomData();
-            if (data instanceof Error) return;
-            this.testData = data;
-            this.showButtons = true;
+            try {
+                const data = await getRandomData();
+                this.testData = data;
+                this.showButtons = true;
+            } catch (e) {
+                console.error(e);
+            }
         },
         clearData() {
             Object.keys(this.testData).forEach(key => {
@@ -60,9 +63,12 @@ export default defineComponent({
             this.result = -1;
         },
         async checkData() {
-            const data = await getCalcPrice();
-            if (data instanceof Error) return;
-            this.result = data.price;
+            try {
+                const data = await getCalcPrice();
+                this.result = data.price;
+            } catch (e) {
+                console.error(e);
+            }
         },
         updateAfterInput(data: KeyValue) {
             this.testData[data.key] = data.value;
