@@ -1,6 +1,6 @@
 # ML-web
 
-Web interface for server queries containing a pre-trained model with a linear regression algorithm
+Web interface for [server](https://github.com/gfnIvanov/padb_template) queries containing a pre-trained model with a linear regression algorithm
 
 ## Project setup
 ```
