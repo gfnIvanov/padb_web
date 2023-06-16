@@ -4,7 +4,7 @@ import { getRandomData } from '../src/utils/getRandomData';
 
 test('Check get-random-data', async () => {
     try {
-        await axios.get('http://127.0.0.1:9100/get-random-data');
+        await axios.get('http://127.0.0.1:5000/get-random-data');
         const data = await getRandomData();
         expect(data).toBeDefined();
     } catch (e) {
