@@ -4,7 +4,7 @@ import type { TestData } from '@/types';
 export async function getRandomData(): Promise<TestData> {
     try {
         const response = await axios.get(
-            'http://127.0.0.1:9100/get-random-data',
+            'http://127.0.0.1:5000/get-random-data',
         );
         if (response.status !== 200) throw new Error(response.statusText);
         return response.data;

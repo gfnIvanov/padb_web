@@ -48,6 +48,7 @@ export default defineComponent({
     methods: {
         async getData() {
             try {
+                this.result = -1;
                 const data = await getRandomData();
                 this.testData = data;
                 this.showButtons = true;
@@ -64,8 +65,7 @@ export default defineComponent({
         },
         async checkData() {
             try {
-                const data = await getCalcPrice();
-                this.result = data.price;
+                this.result = await getCalcPrice(this.testData);
             } catch (e) {
                 console.error(e);
             }
