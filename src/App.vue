@@ -71,7 +71,9 @@ export default defineComponent({
             }
         },
         updateAfterInput(data: KeyValue) {
-            this.testData[data.key] = data.value;
+            this.testData[data.key] = isNaN(Number(data.value))
+                ? data.value
+                : Number(data.value);
             this.showButtons = data.value !== '';
         },
     },
